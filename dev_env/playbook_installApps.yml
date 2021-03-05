@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: update apt and cache
+    apt: update_cache=yes force_apt_get=yes
+
+  - name: install apps
+    apt:
+      name:
+        - docker.io
+        - apt-transport-https
+        - curl
+        - python3
